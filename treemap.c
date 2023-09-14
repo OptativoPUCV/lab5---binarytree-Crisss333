@@ -45,6 +45,7 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
     // Inicializar las variables del TreeMap
     map->root = NULL;
     map->current = NULL;
+    map->lower_than = lt;
 
     //new->lower_than = lower_than;
     return map;
