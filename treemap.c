@@ -56,6 +56,34 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
+  if (tree == NULL || key == NULL || value == NULL) {
+        return; // Manejo de errores si el mapa, la clave o el valor son nulos
+  }
+
+    // Paso 1: Realizar una búsqueda para encontrar la ubicación adecuada para el nuevo nodo
+  TreeNode* currentNode = tree->root;
+  TreeNode* parentNode = NULL;
+
+  while (currentNode != NULL) {
+      int comparacion = tree->lower_than(key, currentNode->pair->key);
+
+      if (comparacion == 0) return;
+      
+
+      else if (comparacion < 0) {
+        parentNode = currentNode
+        currentNode = currentNode->left;       
+      } 
+
+      else {
+        parentNode = currentNode
+        currentNode = currentNode->right;       
+      } 
+  }
+
+  
+  
+
 }
 
 TreeNode * minimum(TreeNode * x){
@@ -88,36 +116,6 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     TreeNode* currentNode = tree->root;
 
     while (currentNode != NULL) {
-        int comparisonResult = tree->lower_than(key, currentNode->pair->key);
-
-        if (comparisonResult == 0) {
-            // Se encontró la clave
-            tree->current = currentNode; // Actualizar el puntero current
-            return currentNode->pair;
-        } else if (comparisonResult < 0) {
-            // La clave es menor, buscar en el subárbol izquierdo
-            currentNode = currentNode->left;
-        } else {
-            // La clave es mayor, buscar en el subárbol derecho
-            currentNode = currentNode->right;
-        }
-    }
-
-    // La clave no se encontró en el árbol
-    tree->current = NULL; // No se encontró, por lo que current se establece como NULL
-    return NULL;
-}
-
-
-/*
-{
-    if (tree == NULL || key == NULL) {
-        return NULL; // Manejo de errores si el mapa o la clave son nulos
-    }
-
-    TreeNode* currentNode = tree->root;
-
-    while (currentNode != NULL) {
       int comparacion = tree->lower_than(key, currentNode->pair->key);
 
       if (comparacion == 0) {
@@ -133,7 +131,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     tree->current = NULL;
     return NULL;
 }
-*/
+
 
 Pair * upperBound(TreeMap * tree, void* key) {
     return NULL;

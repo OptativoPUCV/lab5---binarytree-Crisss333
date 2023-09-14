@@ -49,3 +49,26 @@ Thu 14 Sep 2023 07:25:16 PM UTC:
  tests:  6|7
 total_score: 5/70
 98954ec
+Thu 14 Sep 2023 07:32:49 PM UTC: 
+ treemap.c | 60 +++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 29 insertions(+), 31 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:74:33: error: expected ‘;’ before ‘currentNode’
+   74 |         parentNode = currentNode
+      |                                 ^
+      |                                 ;
+   75 |         currentNode = currentNode->left;
+      |         ~~~~~~~~~~~              
+treemap.c:79:33: error: expected ‘;’ before ‘currentNode’
+   79 |         parentNode = currentNode
+      |                                 ^
+      |                                 ;
+   80 |         currentNode = currentNode->right;
+      |         ~~~~~~~~~~~              
+treemap.c:65:13: error: variable ‘parentNode’ set but not used [-Werror=unused-but-set-variable]
+   65 |   TreeNode* parentNode = NULL;
+      |             ^~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+1720822
