@@ -99,7 +99,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 
       else currentNode = currentNode->right;
     }
-  
+    tree->current = NULL;
     return NULL;
 }
 
