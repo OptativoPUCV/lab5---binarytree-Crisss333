@@ -42,6 +42,10 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
         return NULL; // Manejo de error si no se puede reservar memoria
     }
 
+    // Inicializar las variables del TreeMap
+    map->root = NULL;
+    map->current = NULL;
+
     //new->lower_than = lower_than;
     return map;
 }
