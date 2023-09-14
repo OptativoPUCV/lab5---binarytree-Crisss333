@@ -81,9 +81,23 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
       } 
   }
 
-  
-  
+  TreeNode* newNode = createTreeNode(key, value);
 
+  if (parentNode == NULL) {
+      // El árbol estaba vacío, el nuevo nodo será la raíz
+      tree->root = newNode;
+  } else if (tree->lower_than(key, parentNode->pair->key) < 0) {
+      // La clave es menor que la del nodo padre, enlazar en el subárbol izquierdo
+      parentNode->left = newNode;
+      newNode->parent = parentNode;
+  } else {
+      // La clave es mayor que la del nodo padre, enlazar en el subárbol derecho
+      parentNode->right = newNode;
+      newNode->parent = parentNode;
+  }
+
+  // Actualizar current para que apunte al nuevo nodo
+  tree->current = newNode;
 }
 
 TreeNode * minimum(TreeNode * x){

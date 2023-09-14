@@ -83,3 +83,9 @@ treemap.c:65:13: error: variable ‘parentNode’ set but not used [-Werror=unus
 cc1: all warnings being treated as errors
 Compilation failed
 e95844d
+Thu 14 Sep 2023 07:34:08 PM UTC: 
+ treemap.c | 20 +++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
+ tests:  6|7
+total_score: 5/70
+31e5def
