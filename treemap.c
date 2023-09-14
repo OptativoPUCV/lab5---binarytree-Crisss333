@@ -71,12 +71,12 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
       
 
       else if (comparacion < 0) {
-        parentNode = currentNode
+        parentNode = currentNode;
         currentNode = currentNode->left;       
       } 
 
       else {
-        parentNode = currentNode
+        parentNode = currentNode;
         currentNode = currentNode->right;       
       } 
   }
