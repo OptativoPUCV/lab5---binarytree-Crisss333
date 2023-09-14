@@ -88,6 +88,36 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     TreeNode* currentNode = tree->root;
 
     while (currentNode != NULL) {
+        int comparisonResult = tree->lower_than(key, currentNode->pair->key);
+
+        if (comparisonResult == 0) {
+            // Se encontró la clave
+            tree->current = currentNode; // Actualizar el puntero current
+            return currentNode->pair;
+        } else if (comparisonResult < 0) {
+            // La clave es menor, buscar en el subárbol izquierdo
+            currentNode = currentNode->left;
+        } else {
+            // La clave es mayor, buscar en el subárbol derecho
+            currentNode = currentNode->right;
+        }
+    }
+
+    // La clave no se encontró en el árbol
+    tree->current = NULL; // No se encontró, por lo que current se establece como NULL
+    return NULL;
+}
+
+
+/*
+{
+    if (tree == NULL || key == NULL) {
+        return NULL; // Manejo de errores si el mapa o la clave son nulos
+    }
+
+    TreeNode* currentNode = tree->root;
+
+    while (currentNode != NULL) {
       int comparacion = tree->lower_than(key, currentNode->pair->key);
 
       if (comparacion == 0) {
@@ -99,10 +129,11 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 
       else currentNode = currentNode->right;
     }
+  
     tree->current = NULL;
     return NULL;
 }
-
+*/
 
 Pair * upperBound(TreeMap * tree, void* key) {
     return NULL;
