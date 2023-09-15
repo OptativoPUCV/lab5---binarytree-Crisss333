@@ -160,6 +160,16 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             free(node);
         }
     }
+
+    // Caso 3: Nodo con dos hijos
+    else {
+        TreeNode* successor = minimum(node->right);
+        // Copiamos los datos del nodo mínimo (successor) al nodo actual (node)
+        node->pair->key = successor->pair->key;
+        node->pair->value = successor->pair->value;
+        // Eliminamos el nodo mínimo (successor) recursivamente
+        removeNode(tree, successor);
+    }
 }
   
 
