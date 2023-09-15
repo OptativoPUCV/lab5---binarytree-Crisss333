@@ -102,7 +102,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
 
 TreeNode * minimum(TreeNode * x){
-    //Si x no tiene hijo izquierdo, x es el nodo con la clave mínima
+    // Si x no tiene hijo izquierdo, x es el nodo con la clave mínima
     if (x == NULL) return NULL;
 
     while (x->left != NULL) x = x->left;
@@ -217,6 +217,14 @@ Pair * upperBound(TreeMap * tree, void* key) {
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
+    if (tree == NULL || tree->root == NULL) return NULL;
+
+    TreeNode * current = minimum(tree->root);
+
+    if(current != NULL) {
+        tree->current = current;
+        return current->pair;
+    }
     return NULL;
 }
 
