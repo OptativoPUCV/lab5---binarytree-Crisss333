@@ -228,6 +228,8 @@ Pair * upperBound(TreeMap * tree, void* key) {
             // Se encontró una clave igual a 'key', devuelve el par asociado
             return current->pair;
         }
+
+    return NULL;
     }
 
 Pair * firstTreeMap(TreeMap * tree) {
