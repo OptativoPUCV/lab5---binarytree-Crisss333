@@ -210,7 +210,9 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 }
 
 Pair * upperBound(TreeMap * tree, void* key) {
-    if (tree == NULL || tree->root == NULL) return NULL;
+    if (tree == NULL || tree->root == NULL) {
+        return NULL;
+    }
 
     TreeNode* current = tree->root;
     TreeNode* ub_node = NULL;
@@ -225,10 +227,17 @@ Pair * upperBound(TreeMap * tree, void* key) {
             current = current->right;
         }
     }
-    if (ub_node != NULL) return ub_node->pair;
-  
+
+    if (ub_node != NULL) {
+        // Verifica si la clave del nodo 'ub_node' es menor o igual a 'key'
+        if (!tree->lower_than(key, ub_node->pair->key)) {
+            return ub_node->pair;
+        }
+    }
+
     return NULL;
 }
+
 
 /*
 {
