@@ -135,6 +135,31 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             free(node);
         }
     }
+
+    // Caso 2: Nodo con un hijo
+    else if (node->left == NULL || node->right == NULL) {
+        TreeNode* child = (node->left != NULL) ? node->left : node->right;
+
+        if (node->parent == NULL) {
+            // Es el nodo raíz, reemplazamos con el hijo y liberamos el nodo
+            tree->root = child;
+            child->parent = NULL;
+            free(node->pair);
+            free(node);
+        } else if (node->parent->left == node) {
+            // El nodo es un hijo izquierdo
+            node->parent->left = child;
+            child->parent = node->parent;
+            free(node->pair);
+            free(node);
+        } else {
+            // El nodo es un hijo derecho
+            node->parent->right = child;
+            child->parent = node->parent;
+            free(node->pair);
+            free(node);
+        }
+    }
 }
   
 
