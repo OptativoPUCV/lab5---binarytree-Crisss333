@@ -216,6 +216,28 @@ Pair * upperBound(TreeMap * tree, void* key) {
     TreeNode* ub_node = NULL;
 
     while (current != NULL) {
+        if (tree->lower_than(key, current->pair->key)) {
+            // La clave actual es mayor que 'key', actualiza 'ub_node' y ve a la izquierda
+            ub_node = current;
+            current = current->left;
+        } else {
+            // La clave actual es menor o igual que 'key', ve a la derecha
+            current = current->right;
+        }
+    }
+    if (ub_node != NULL) return ub_node->pair;
+  
+    return NULL;
+}
+
+/*
+{
+    if (tree == NULL || tree->root == NULL) return NULL;
+
+    TreeNode* current = tree->root;
+    TreeNode* ub_node = NULL;
+
+    while (current != NULL) {
         // Compara las claves utilizando la función lower_than
         if (tree->lower_than(key, current->pair->key)) {
             // La clave actual es mayor que 'key', actualiza 'ub_node' y ve a la izquierda
@@ -233,6 +255,7 @@ Pair * upperBound(TreeMap * tree, void* key) {
 
     return NULL;
 }
+*/
 
 Pair * firstTreeMap(TreeMap * tree) {
     if (tree == NULL || tree->root == NULL) return NULL;
