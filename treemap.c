@@ -225,7 +225,7 @@ Pair * firstTreeMap(TreeMap * tree) {
         tree->current = current;
         return current->pair;
     }
-    //return NULL;
+    return NULL;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
