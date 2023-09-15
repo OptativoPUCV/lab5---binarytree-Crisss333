@@ -123,6 +123,28 @@ void eraseTreeMap(TreeMap * tree, void* key){
 
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
+    TreeNode* current = tree->root;
+
+    while (current != NULL) {
+        // Compara las claves utilizando la función lower_than
+        if (tree->lower_than(key, current->pair->key)) {
+            current = current->left;
+        } else if (tree->lower_than(current->pair->key, key)) {
+            current = current->right;
+        } else {
+            // Se encontró la clave, actualiza el puntero 'current' y devuelve el Pair asociado
+            tree->current = current;
+            return current->pair;
+        }
+    }
+
+    // La clave no se encontró en el mapa, 'current' sigue siendo NULL
+    tree->current = NULL;
+    return NULL;
+}
+
+/*
+{
     if (tree == NULL || key == NULL) {
         return NULL; // Manejo de errores si el mapa o la clave son nulos
     }
@@ -145,6 +167,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     tree->current = NULL;
     return NULL;
 }
+*/
 
 
 Pair * upperBound(TreeMap * tree, void* key) {
