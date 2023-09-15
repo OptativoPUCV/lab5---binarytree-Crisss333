@@ -210,9 +210,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 }
 
 Pair * upperBound(TreeMap * tree, void* key) {
-    if (tree == NULL || tree->root == NULL) {
-        return NULL;
-    }
+    if (tree == NULL || tree->root == NULL) return NULL;
 
     TreeNode* current = tree->root;
     Pair* ub_pair = NULL;
@@ -231,9 +229,7 @@ Pair * upperBound(TreeMap * tree, void* key) {
         }
     }
 
-    if (ub_pair != NULL) {
-        return ub_pair;
-    }
+    if (ub_pair != NULL) return ub_pair;
 
     return NULL;
 }
