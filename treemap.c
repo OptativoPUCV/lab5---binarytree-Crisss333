@@ -121,6 +121,12 @@ void eraseTreeMap(TreeMap * tree, void* key){
 }
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
+    if (tree == NULL || tree->root == NULL) {
+        // Manejo de error si el TreeMap o el árbol están vacíos
+        tree->current = NULL;
+        return NULL;
+    }
+  
     TreeNode* current = tree->root;
 
     while (current != NULL) {
