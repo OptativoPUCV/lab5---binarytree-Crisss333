@@ -95,3 +95,34 @@ Fri 15 Sep 2023 06:24:15 PM UTC:
  tests:  11|6
 total_score: 15/70
 ba84ae1
+Fri 15 Sep 2023 06:31:56 PM UTC: 
+ treemap.c | 60 ++++++++++++++++++++----------------------------------------
+ 1 file changed, 20 insertions(+), 40 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:89:7: error: ‘parentNode’ undeclared (first use in this function); did you mean ‘parent’?
+   89 |   if (parentNode == NULL) {
+      |       ^~~~~~~~~~
+      |       parent
+treemap.c:89:7: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:65:13: error: variable ‘parent’ set but not used [-Werror=unused-but-set-variable]
+   65 |   TreeNode* parent = NULL;
+      |             ^~~~~~
+treemap.c: At top level:
+treemap.c:105:2: error: expected identifier or ‘(’ before ‘/’ token
+  105 | */
+      |  ^
+test.c: In function ‘minimum_test’:
+test.c:225:19: error: implicit declaration of function ‘minimum’ [-Werror=implicit-function-declaration]
+  225 |     TreeNode* n = minimum(tree->root);
+      |                   ^~~~~~~
+test.c:225:19: error: initialization of ‘TreeNode *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+test.c:239:7: error: assignment to ‘TreeNode *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  239 |     n = minimum(tree->root->left);
+      |       ^
+test.c:250:7: error: assignment to ‘TreeNode *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  250 |     n = minimum(tree->root);
+      |       ^
+cc1: all warnings being treated as errors
+Compilation failed
+29e37b0
