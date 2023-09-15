@@ -86,27 +86,18 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
       return;
   }
 
-  if (parentNode == NULL) {
-      // El árbol estaba vacío, el nuevo nodo será la raíz
-      tree->root = newNode;
-  } else if (tree->lower_than(key, parentNode->pair->key) < 0) {
-      // La clave es menor que la del nodo padre, enlazar en el subárbol izquierdo
-      parentNode->left = newNode;
-      newNode->parent = parentNode;
+  // Enlaza el nuevo nodo con el padre
+  newNode->parent = parent;
+
+  // Decide si el nuevo nodo es un hijo izquierdo o derecho
+  if (tree->lower_than(key, parent->pair->key)) {
+      parent->left = newNode;
   } else {
-      // La clave es mayor que la del nodo padre, enlazar en el subárbol derecho
-      parentNode->right = newNode;
-      newNode->parent = parentNode;
+      parent->right = newNode;
   }
 
-  // Actualizar current para que apunte al nuevo nodo
+  // Actualiza el puntero 'current' para que apunte al nuevo nodo insertado
   tree->current = newNode;
-}
-*/
-
-TreeNode * minimum(TreeNode * x){
-
-    return NULL;
 }
 
 
